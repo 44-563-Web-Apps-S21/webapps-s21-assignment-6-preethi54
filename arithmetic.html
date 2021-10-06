@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Arithmetic logic page
+    </title>
+</head>
+
+<body>
+
+    <h2> Preethi Jadhav Computes</h2>
+    <form>
+        <label for="baseNum">Enter a base </label>
+        <input type="number" id="baseNum" name="baseNum" value="10"> <br>
+        <br>
+        <label for="exponentNum">Enter an exponent </label>
+        <input type="number" id="exponentNum" name="exponentNum"> <br>
+        <br>
+        <button type="button" onclick="powers()">Compute</button>
+        <br>
+        <br>
+    </form>
+
+    <p id="result">This text will be replaced </p>
+    <br><br>
+    <form>
+        <input type="radio" id="radio1" name="radio" value="plus" onClick="processRadio()" >
+        <label for="radio1"> + </label></br>
+
+        <input type="radio" id="radio2" name="radio" value="minus" onClick="processRadio()">
+        <label for="radio1"> - </label></br>
+
+        <input type="radio" id="radio3" name="radio" value="times" onClick="processRadio()">
+        <label for="radio1"> * </label></br>
+
+        <input type="radio" id="radio4" name="radio" value="divide" onClick="processRadio()">
+        <label for="radio4"> / </label></br>
+
+    </form>
+
+    <p id="resultRadio">This text will be replaced by calculations </p>
+
+    <script>
+        function powers() {
+            let result = "";
+            let res = 1;
+            let baseNum = document.getElementById("baseNum").value;
+            let exponentNum = document.getElementById("exponentNum").value;
+            for (i = 0; i < exponentNum; i++) {
+                res = res * baseNum;
+                result += res+" " ;
+            }
+            document.getElementById("result").innerHTML = "Powers of base are: " + result +" ";
+        }
+
+        function processRadio() {
+            const value1 = document.getElementById("baseNum").value;
+            const value2 = document.getElementById("exponentNum").value;
+
+
+            if (document.getElementById("radio1").checked) {
+                const sum = parseInt(value1) + parseInt(value2);
+                document.getElementById("resultRadio").innerHTML = " The sum of " + value1 + " and " + value2 + " is : " + sum;
+                document.getElementById("radio2").checked = false;
+                document.getElementById("radio3").checked = false;
+                document.getElementById("radio4").checked = false;
+
+            } else if (document.getElementById("radio2").checked) {
+                const sub = parseInt(value1) - parseInt(value2);
+
+                document.getElementById("resultRadio").innerHTML = " The subraction of " + value1 + " and " + value2 + " is : " + sub;
+                document.getElementById("radio1").checked = false;
+                document.getElementById("radio3").checked = false;
+                document.getElementById("radio4").checked = false;
+            } else if (document.getElementById("radio3").checked) {
+
+                document.getElementById("resultRadio").innerHTML = " The multiplication of " + value1 + " and " + value2 + " is : " + value1 * value2;
+                document.getElementById("radio1").checked = false;
+                document.getElementById("radio2").checked = false;
+                document.getElementById("radio4").checked = false;
+            } else if (document.getElementById("radio4").checked) {
+
+                document.getElementById("resultRadio").innerHTML = " The division of " + value1 + " and " + value2 + " is : " + value1 / value2;
+                document.getElementById("radio1").checked = false;
+                document.getElementById("radio2").checked = false;
+                document.getElementById("radio3").checked = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
