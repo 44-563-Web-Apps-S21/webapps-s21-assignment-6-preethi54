@@ -35,19 +35,32 @@
         let correct = 0;
         let wrong = 0;
         let usingImage = 1;
+        let counterCorrect= 0;
+        let counterWrong= 0;
         function processPhrase() {
             let secretValue = document.getElementById("password").value;
             let guessedValue = document.getElementById("guessPassword").value;
             if (secretValue == guessedValue) {
+                counterCorrect ++;  //increment correct counter
+                counterWrong= 0;    // reset wrong counter
                 correct += 1;
                 alert("Access allowed");
                 document.getElementById("resultedVal").innerHTML = " Your result correct count : " + correct;
             } else {
+                counterWrong++;  //increment wrong counter
+                counterCorrect= 0;    // reset correct counter
                 wrong += 1;
                 alert("Access denied");
                 document.getElementById("resultedVal").innerHTML = " Your result wrong count : " + wrong;
 
+                if(counterWrong >=3 && wrong >= 3 ){
+                    lockAccount();
+                }
             }
+        }
+
+        function lockAccount(){
+            alert("account locked");
         }
 
         function newImage() {
