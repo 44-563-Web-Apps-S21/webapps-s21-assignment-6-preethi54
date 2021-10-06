@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html>
- <head>
-     <title>
-         This is Car Page 
-     </title>
- </head>
+
+<head>
+    <title>
+        This is Car Page
+    </title>
+</head>
+
 <body>
 
-<h2>Preethi Jadhav orders a car</h2>
-    
+    <h2>Preethi Jadhav orders a car</h2>
+    <form>
+        <input type="checkbox" id="checkbox1" name="checkbox" value="electric" >
+        <label for="radio1">electric </label></br>
+
+        <input type="checkbox" id="checkbox2" name="checkbox" value="ac" >
+        <label for="radio1">ac </label></br>
+
+        <input type="checkbox" id="checkbox3" name="checkbox" value="gps" >
+        <label for="radio1">gps </label></br>
+        <br>
+        <button type="button" onclick="orderCar()">Order a car</button>
+
+    </form>
+    <p id="resultCheckbox">This text will be replaced </p>
+    <br><br>
+    <script>
+        let my_car = {};
+        function orderCar(){
+            my_car = {};
+
+            if(document.getElementById("checkbox1").checked){
+                my_car.electric = true;
+            }
+             if (document.getElementById("checkbox2").checked){
+                my_car.ac = true;
+            }
+            if (document.getElementById("checkbox3").checked){
+                my_car.gps = true;
+            }
+            document.getElementById("resultCheckbox").innerHTML = JSON.stringify(my_car);
+        }
+    </script>
 </body>
+
 </html>
